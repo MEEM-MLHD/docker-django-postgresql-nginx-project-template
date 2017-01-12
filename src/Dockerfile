@@ -2,6 +2,7 @@ FROM python:2.7
 
 MAINTAINER Samuel Goldszmidt
 
+
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update
@@ -9,8 +10,12 @@ RUN apt-get update
 # gettext
 RUN apt-get install -y gettext
 
-# pip
+# GIS lib
+RUN apt-get install -y binutils libproj-dev gdal-bin
+
+# uWSGI
 RUN pip install pip
+RUN pip install uwsgi
 
 # source code dependancies
 WORKDIR /
